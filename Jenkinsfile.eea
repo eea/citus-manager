@@ -10,7 +10,7 @@ pipeline {
             steps {
                 script {
                     def date = sh(returnStdout: true, script: 'echo $(date "+%Y-%m-%dT%H%M")').trim()
-                    image = docker.build("eeacms/citus-postgis:1.0")
+                    image = docker.build("eeacms/citus-manager:1.0")
                     docker.withRegistry('https://index.docker.io/v1/', 'eeajenkins') {
                         image.push()
                         image.push(date)
