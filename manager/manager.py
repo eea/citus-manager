@@ -96,6 +96,7 @@ class Manager:
             handler = self.pod_interactions[event_type]
             if citus_type not in handler:
                 log.error("Not recognized citus type %s", citus_type)
+                continue
             try:
                 handler[citus_type](pod_name)
             except ReadinessError as e:
